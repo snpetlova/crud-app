@@ -45,7 +45,24 @@ app.post('/create', (req, res) => {
         }
         return res.status(200).json({ message: 'Student created successfully', result });
     });
-})
+});
+
+app.put('/update/:id', (req, res) => {
+    const sql = "UPDATE student SET `Name` = ?, `Email` = ? WHERE ID = ?";
+    const values = [
+        req.body.name,
+        req.body.email
+    ];
+    const id = req.params.id;
+
+    connection.query(sql, [...values, id], (err, result) => {
+        if (err) {
+            console.error('Error updating student:', err);
+            return res.status(500).json({ error: 'Failed to update student' });
+        }
+        return res.status(200).json({ message: 'Student updated successfully', result });
+    });
+});
 
 const PORT = 8081;
 

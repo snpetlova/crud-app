@@ -45,17 +45,26 @@ The React development server will run on http://localhost:3000.
 
 
 ### Usage
+
 - Access the frontend application in your web browser at http://localhost:3000.
 - Use the application to perform CRUD operations on student records:
+
   • Create: Add new student records.
+
   • Read: View a list of existing student records.
+
   • Update: Edit and update student information.
+
   • Delete: Remove student records.
 
 ### API Endpoints
+
 • GET /: Get all student records.
+
 • POST /create: Create a new student record.
+
 • PUT /update/:id: Update an existing student record by ID.
+
 • DELETE /delete/:id: Delete a student record by ID.
 
 ### Troubleshooting

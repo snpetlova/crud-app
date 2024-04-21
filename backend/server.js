@@ -64,6 +64,19 @@ app.put('/update/:id', (req, res) => {
     });
 });
 
+app.delete('/student/:id', (req, res) => {
+    const sql = "DELETE FROM student WHERE Id = ?";
+    const id = req.params.id;
+    
+    connection.query(sql, [id], (err, result) => {
+        if (err) {
+            console.error('Error deleting student:', err);
+            return res.status(500).json({ error: 'Failed to delete student' });
+        }
+        return res.status(200).json({ message: 'Student deleted successfully', result });
+    });
+});
+
 const PORT = 8081;
 
 app.listen(PORT, () => {

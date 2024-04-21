@@ -13,6 +13,17 @@ function Student() {
     .catch(err => console.log(err))
   }, [])
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8081/student/${id}`);
+      alert("Student deleted successfully!");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting student:", error);
+      alert("Failed to delete student.");
+    }
+  };
+
   return (
     <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-3">
@@ -32,7 +43,7 @@ function Student() {
                 <td>{data.Email}</td>
                 <td>
                   <Link to={`/update/${data.ID}`} className="btn btn-primary">Update</Link>
-                  <button className="btn btn-danger ms-2">Delete</button>
+                  <button className="btn btn-danger ms-2" onClick={e => handleDelete(data.ID)}>Delete</button>
                 </td>
               </tr>
             ))}
